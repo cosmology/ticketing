@@ -1,0 +1,18 @@
+# VS Code
+.vscode/settings.json
+
+# node.js
+node_modules/
+coverage/
+npm-debug.log
+yarn-error.log
+
+# Testing
+*.snap
+__snapshots__
+
+# OS IDE related
+.DS_Store
+.idea
+logs
+.env.*
