@@ -7,6 +7,8 @@ declare global {
   var getAuthCookie: () => Promise<string[]>;
 }
 
+jest.setTimeout(20000);
+
 let mongo: any;
 beforeAll(async () => {
 
