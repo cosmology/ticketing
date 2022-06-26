@@ -8,7 +8,6 @@ it('returns a 201 on successful signup', async () => {
       email: 'test@test.com',
       password: 'password'
     }).then(res => {
-      expect(res.body._id).toBeTruthy();
       expect(res.statusCode).toBe(201);
     });
 });
@@ -57,14 +56,13 @@ it('disallows duplicate emails',async () => {
     })
     .expect(201);
 
-  let response = await request(app)
-    .post('api/users/signup')
+  await request(app)
+    .post('/api/users/signup')
     .send({
       email: 'test@test.com',
       password: 'password'
-    });
-
-    expect(response.statusCode).toBe(404);
+    })
+    .expect(400);
   
 });
 

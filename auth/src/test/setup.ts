@@ -7,10 +7,12 @@ declare global {
   var getAuthCookie: () => Promise<string[]>;
 }
 
+jest.setTimeout(20000);
+
 let mongo: any;
 beforeAll(async () => {
-
   process.env.JWT_KEY = 'asdfasdf';
+  
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
@@ -29,10 +31,8 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-  //await mongo.stop();
-  //await mongoose.connection.close();
-  await mongoose.connection.db.dropDatabase();
-  await mongoose.disconnect();
+  await mongo.stop();
+  await mongoose.connection.close();
 });
 
 global.getAuthCookie = async () => {
