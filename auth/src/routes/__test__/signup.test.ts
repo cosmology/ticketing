@@ -8,7 +8,6 @@ it('returns a 201 on successful signup', async () => {
       email: 'test@test.com',
       password: 'password'
     }).then(res => {
-      expect(res.body._id).toBeTruthy();
       expect(res.statusCode).toBe(201);
     });
 });
