@@ -56,14 +56,13 @@ it('disallows duplicate emails',async () => {
     })
     .expect(201);
 
-  let response = await request(app)
-    .post('api/users/signup')
+  await request(app)
+    .post('/api/users/signup')
     .send({
       email: 'test@test.com',
       password: 'password'
-    });
-
-    expect(response.statusCode).toBe(404);
+    })
+    .expect(400);
   
 });
 
