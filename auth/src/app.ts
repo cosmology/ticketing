@@ -15,7 +15,8 @@ app.use(json());
 app.use(
     cookieSession({
         signed: false,
-        secure: process.env.NODE_ENV !== 'test' // over https breaks jest tests if true
+        //secure: process.env.NODE_ENV !== 'test' // over https breaks jest tests if true
+        secure: false,
     })
 )
 
