@@ -9,9 +9,6 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
   queueGroupName = queueGroupName;
 
   async onMessage(data: OrderCreatedEvent['data'], msg: Message) {
-
-    console.log('OrderCreatedEvent data.ticket.id ', data.ticket.id);
-
     // Find the ticket that the order is reserving
     const ticket = await Ticket.findById(data.ticket.id);
 
@@ -25,7 +22,10 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
 
     // Save the ticket
     await ticket.save();
-    // example how listener publish its own events
+
+    console.log('OrderCreatedEvent saved ticketd ', ticket);
+
+    // example how listener publishes its own events
     // when doing await we never reach ack, without 
     // we assume that everything goes well so we need it
     await new TicketUpdatedPublisher(this.client).publish({
