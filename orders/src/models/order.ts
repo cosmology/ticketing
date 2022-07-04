@@ -3,7 +3,7 @@ import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 import { OrderStatus } from '@iptickets/common';
 import { TicketDoc } from './ticket';
 
-// we do this here se on the import we have everything Order related
+// We do this here se on the import we have everything Order related
 // in one place rather than multiple imports.
 export { OrderStatus };
 
@@ -18,7 +18,7 @@ interface OrderAttrs {
 
 // An interface that describes the properties
 // that a Order Document has. We create this since
-// attr that are nneded to create an order might not
+// attr that are needed to create an order might not
 // end up in a Document.
 interface OrderDoc extends mongoose.Document {
   userId: string;
@@ -29,7 +29,7 @@ interface OrderDoc extends mongoose.Document {
 }
 
 // An interface that describes the properties
-// that a Order Model has. Represents an overall collection
+// that an Order Model has. Represents an overall collection
 interface OrderModel extends mongoose.Model<OrderDoc> {
   build(attrs: OrderAttrs): OrderDoc;
 }
