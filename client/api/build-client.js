@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 export default ({ req }) => {
+  const isProduction = process.env.NODE_ENV === 'production';
   if (typeof window === 'undefined') {
     // We are on the server
     return axios.create({
-      baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
-      //'http://www.my-tickets.store/',
+      baseURL: isProduction
+        ? 'http://www.my-tickets.store/'
+        : 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
       headers: req.headers,
     });
   } else {
