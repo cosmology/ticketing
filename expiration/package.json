@@ -20,6 +20,7 @@
   "dependencies": {
     "@iptickets/common": "^1.0.17",
     "@types/bull": "^3.15.8",
+    "@types/node": "^18.7.16",
     "bull": "^4.8.4",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^2.0.0",
